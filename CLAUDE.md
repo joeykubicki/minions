@@ -1,9 +1,11 @@
-@AGENTS.md
+# Working on the minions kit
 
-# Claude Code orchestration
+This repo is a **kit** that gets copied into other projects. It isn't an application. Read `README.md` and `DESIGN.md` before changing anything.
 
-You are the primary coding agent and lead engineer. Classify each request using `docs/ai/ROUTING.md`; invoke only specialists whose input can materially improve the result. Use native project subagents in `.claude/agents/` and skills in `.claude/skills/` when available. Pass the task objective, relevant paths, constraints, authorized actions and required output explicitly. Do not assume subagents know the entire conversation.
-
-Run small low-risk changes directly. For larger features, use the feature-delivery skill, coordinate specialist findings, and implement only within the agreed scope. Do not let simultaneous workers edit overlapping files; use isolated worktrees or sequential changes. The parent owns integration and verification.
-
-Codex is an optional external independent reviewer. When its review is required, prepare the handoff and mark the gate pending until its actual findings arrive. Do not imply Codex was invoked automatically. Reconcile findings with evidence; seek human input for unresolved product or architecture decisions.
+- `template/` is installed verbatim into projects. Everything in it must be **project-agnostic**: no stack assumptions, no project-specific facts. Placeholders stay `TBD`.
+- `library/agents/` holds optional agents. `install.sh` is the installer.
+- Follow the style guide in `DESIGN.md` for agent and skill files. Keep the core small: a new core agent or skill needs a concrete reason from real usage.
+- **YAML:** never put `: ` inside an unquoted frontmatter value. The file will silently fail to load.
+- After changing `template/` or `install.sh`: install into a temp dir (`./install.sh "$(mktemp -d)"`) and confirm it runs cleanly. If agents or skills changed, open Claude Code in that temp dir and check `/agents` and the `/` menu.
+- For any user-visible change, bump `VERSION` (semver) and add a `CHANGELOG.md` entry.
+- When applying feedback harvested from a project's `docs/ai/MINIONS.md`, note the source project in the changelog entry.
