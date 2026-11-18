@@ -6,8 +6,8 @@ This project's `.claude/agents/`, `.claude/skills/`, and `docs/ai/` came from th
 - Installed: {{DATE}}
 - Kit source: {{SOURCE}}
 
-## Library agents added
-<!-- e.g. - database-engineer: Postgres schema work (added 2026-11-20) -->
+## Library additions
+<!-- Optional agents and add-ons from the kit library, e.g. - database-engineer: Postgres schema work (added 2026-11-20) -->
 - none yet
 
 ## Local customizations

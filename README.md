@@ -7,7 +7,7 @@ A living kit of Claude Code **agents, skills, and working agreements** that you 
 - **Optional second opinion:** Codex (or any other tool or human) as an independent reviewer for high-risk changes.
 - **You:** own scope, tradeoffs, and anything irreversible.
 
-> Status: **v0.2, pre-proof-of-concept.** See [ROADMAP.md](ROADMAP.md) for what "v1" means.
+> Status: **v0.3, pre-proof-of-concept.** See [ROADMAP.md](ROADMAP.md) for what "v1" means.
 
 ## Quick start
 
@@ -15,9 +15,10 @@ A living kit of Claude Code **agents, skills, and working agreements** that you 
 # 1. Install the core kit into a project. It never overwrites existing files.
 ./install.sh ~/code/my-project
 
-# 2. Optionally, add specialists the project needs.
+# 2. Optionally, add specialists or add-ons the project needs.
 ./install.sh --list
 ./install.sh ~/code/my-project --add database-engineer product-designer
+./install.sh ~/code/my-project --add usage-tracking
 
 # 3. Open the project in Claude Code and run setup.
 cd ~/code/my-project && claude
@@ -70,12 +71,16 @@ Work is sorted into tiers by **consequence**, not size (`docs/ai/ROUTING.md`):
 
 Most day-to-day work should be Tier 0–1. The heavier process exists for when a mistake would be expensive.
 
+## Measuring AI usage (optional)
+The `usage-tracking` add-on records how many tokens and how much active time went into building a project, so you can show how efficiently it was built. `/usage-report` writes a committed summary to `docs/ai/USAGE.md`: tokens, active time, an API-equivalent cost estimate, and breakdowns by model, agent, day, and session. The detailed ledger stays local. It works entirely from Claude Code's local transcripts. See [its README](library/addons/usage-tracking/README.md).
+
 ## This repo
 
 | Path | What it is |
 | --- | --- |
 | `template/` | Exactly what `install.sh` copies into a project |
 | `library/agents/` | Optional specialists, added per project with `--add` ([index](library/README.md)) |
+| `library/addons/` | Optional add-ons with their own files and hooks, also added with `--add` |
 | `install.sh` | No-overwrite installer |
 | [DESIGN.md](DESIGN.md) | Why it's built this way, how Claude Code loads these files, and a style guide for writing agents and skills |
 | [ROADMAP.md](ROADMAP.md) | v1 criteria and the improvement backlog |

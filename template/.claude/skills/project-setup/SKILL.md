@@ -21,7 +21,7 @@ Fill each in place. Keep the existing headings. Replace `TBD` only with facts yo
 Keep each doc short. These are reference pages, not essays.
 
 ## 3. Recommend library agents
-Read `docs/ai/MINIONS.md` to find the kit's source path. Its `library/README.md` lists optional agents and when each is worth adding. Recommend only the ones this project clearly needs, with one sentence each on why. **Ask before copying any.** Then copy the approved ones from `<source>/library/agents/` into `.claude/agents/` and list them under "Library agents added" in `docs/ai/MINIONS.md`.
+Read `docs/ai/MINIONS.md` to find the kit's source path. Its `library/README.md` lists optional agents and when each is worth adding. Recommend only the ones this project clearly needs, with one sentence each on why. **Ask before copying any.** Then copy the approved ones from `<source>/library/agents/` into `.claude/agents/` and list them under "Library additions" in `docs/ai/MINIONS.md`. The same README lists add-ons (e.g. `usage-tracking`). Those include hooks, so install them with `<source>/install.sh <project-dir> --add <name>` rather than copying files.
 
 ## 4. Optional safety settings
 Suggest permission rules for `.claude/settings.json` that fit this stack. For example, add the project's test and lint commands to `permissions.allow` so they don't prompt every time. Show the change and ask before writing it.

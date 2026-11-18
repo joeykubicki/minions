@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/.claude/usage/usage.py\" sync --quiet",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
